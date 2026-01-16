@@ -349,7 +349,7 @@
           d: "{{ state_attr('sensor.r5_status_raw','data') or {} }}"
           a: "{{ d.get('attributes') or {} }}"
           soc_start: "{{ a.get('batteryLevel', 0) | int(0) }}"
-          hv_kw: "{{ states('<ev-charger-power-output>') | float(0) | round(1) }}"
+          hv_kw: "{{ states('<ev-charger-power>') | float(0) | round(1) }}"
 
       - service: input_datetime.set_datetime
         target:
@@ -1078,4 +1078,5 @@
             (Battery, Status, SOC, EV Settings, Charges, HVAC, Location, Cockpit).
             This uses cached data and does not call the Renault API directly.
           notification_id: "renault_soft_update"
+
           
