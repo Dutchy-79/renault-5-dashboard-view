@@ -365,7 +365,7 @@
         {% endif %}
       attributes:
         source: >-
-          {% set hv = states('ev-charger-power>') %}
+          {% set hv = states('<ev-charger-power>') %}
           {% set hv_kw = (hv | float(0)) if hv not in ['unknown','unavailable','none',''] else 0 %}
           {% set active = is_state('input_boolean.r5_charge_session_active', 'on') %}
           {% set hv_cnt = states('input_number.r5_hv_avg_count') | int(0) %}
@@ -2098,3 +2098,4 @@
             --
           {% endif %}
         {% endif %}
+
